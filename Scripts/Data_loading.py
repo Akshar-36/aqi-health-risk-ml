@@ -2,6 +2,19 @@ import pandas as pd
 import numpy as np
 import tabula
 
+def _get_season(month):
+    """Maps a month number to a season."""
+    if month in [12, 1, 2]:
+        return 'Winter'
+    elif month in [3, 4, 5]:
+        return 'Summer'
+    elif month in [6, 7, 8, 9]:
+        return 'Monsoon'
+    elif month in [10, 11]:
+        return 'Autumn'
+    else:
+        return 'Unknown'
+
 def load_cpcb_data(file_path):
     """Load raw CPCB CSV file."""
     df = pd.read_csv(file_path)
